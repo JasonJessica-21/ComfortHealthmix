@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+
+<title>Checkout</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+.box {
+  width: 420px;
+  background: white;
+  padding: 25px;
+  margin: 80px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+.whatsapp-btn {
+  width: 100%;
+  padding: 14px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Checkout</h2>
+
+  <input type="text" id="name" placeholder="Name">
+  <input type="text" id="phone" placeholder="Phone">
+  <textarea id="address" placeholder="Address"></textarea>
+
+  <button class="whatsapp-btn" onclick="sendWhatsApp()">Order on WhatsApp</button>
+</div>
+
+<script>
+function sendWhatsApp() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  const msg = `Order Details:%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AProduct: Comfort Health Mix%0APrice: Rs.360`;
+
+  window.open("https://wa.me/916363856952?text=" + msg, "_blank");
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UPI Payment | Comfort Health Mix</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== BASIC RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+body {
+  background: #f4f6f3;
+}
+
+/* ===== PAYMENT SECTION ===== */
+.upi-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upi-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.upi-card h2 {
+  color: #2f4f2f;
+  margin-bottom: 10px;
+}
+
+.upi-card p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* ===== BUTTON ===== */
+.upi-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #2e7d32;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.upi-btn:hover {
+  background: #256628;
+}
+
+/* ===== FOOTER TEXT ===== */
+.note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== UPI PAYMENT ===== -->
+<section class="upi-section">
+  <div class="upi-card">
+    <h2>Pay via UPI</h2>
+    <p>Secure payment using any UPI app (GPay, PhonePe, Paytm)</p>
+
+    <button class="upi-btn" onclick="payUPI()">
+      Pay Amount via UPI
+    </button>
+
+    <div class="note">
+      * Works best on mobile phones
+    </div>
+  </div>
+</section>
+
+<script>
+function payUPI() {
+  const upiId = "6363856952@cnrb";   // 🔁 CHANGE TO YOUR UPI ID
+  const merchantName = "Rose Mary";
+  const amount = "399";                  // 🔁 CHANGE PRICE IF NEEDED
+
+  const upiURL = 
+    "upi://pay" +
+    "?pa=" + upiId +
+    "&pn=" + encodeURIComponent(merchantName) +
+    "&am=" + amount +
+    "&cu=INR";
+
+  window.location.href = upiURL;
+}
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Feedback</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== FEEDBACK SECTION ===== */
+.feedback-section {
+    background: #f7f9f6;
+    padding: 60px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.feedback-box {
+    max-width: 500px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.feedback-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2f4f2f;
+}
+
+/* INPUT */
+.feedback-box input,
+.feedback-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.feedback-box textarea {
+    resize: none;
+    height: 120px;
+}
+
+/* STARS */
+.stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.stars span {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.stars span.active {
+    color: #f5b301;
+}
+
+/* BUTTON */
+.feedback-box button {
+    width: 100%;
+    padding: 12px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.feedback-box button:hover {
+    background: #256528;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== FEEDBACK SECTION ===== -->
+<section class="feedback-section">
+
+    <div class="feedback-box">
+        <h2>Give Your Feedback</h2>
+
+        <input type="text" id="fname" placeholder="Your Name">
+
+        <div class="stars" id="starRating">
+            <span onclick="rate(1)">★</span>
+            <span onclick="rate(2)">★</span>
+            <span onclick="rate(3)">★</span>
+            <span onclick="rate(4)">★</span>
+            <span onclick="rate(5)">★</span>
+        </div>
+
+        <textarea id="fmessage" placeholder="Your Feedback"></textarea>
+
+        <button onclick="submitFeedback()">Submit Feedback</button>
+    </div>
+
+</section>
+
+<script>
+let selectedRating = 0;
+
+function rate(star) {
+    selectedRating = star;
+    const stars = document.querySelectorAll(".stars span");
+    stars.forEach((s, i) => {
+        s.classList.toggle("active", i < star);
+    });
+}
+
+function submitFeedback() {
+    const name = document.getElementById("fname").value;
+    const message = document.getElementById("fmessage").value;
+
+    if (name === "" || message === "" || selectedRating === 0) {
+        alert("Please fill name, rating and feedback");
+        return;
+    }
+
+    alert(
+        "Thank you " + name + "!\n" +
+        "Rating: " + selectedRating + " stars\n" +
+        "Feedback submitted successfully."
+    );
+
+    // Reset
+    document.getElementById("fname").value = "";
+    document.getElementById("fmessage").value = "";
+    selectedRating = 0;
+    document.querySelectorAll(".stars span").forEach(s => s.classList.remove("active"));
+}
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact & Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== CONTACT & SUPPORT SECTION ===== */
+.contact-support {
+    background: #f6f8f5;
+    padding: 70px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.contact-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* CARD COMMON */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* CONTACT US */
+.card h2 {
+    margin-bottom: 20px;
+    color: #2f4f2f;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 15px;
+}
+
+.contact-item span {
+    font-size: 22px;
+    margin-right: 12px;
+}
+
+.contact-item a {
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.contact-time {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* SUPPORT INFO */
+.support-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.support-list li {
+    margin-bottom: 14px;
+    font-size: 15px;
+    color: #444;
+}
+
+.support-list strong {
+    color: #2f4f2f;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="contact-support">
+
+    <div class="contact-wrapper">
+
+        <!-- CONTACT US -->
+        <div class="card">
+            <h2>Contact Us</h2>
+
+            <div class="contact-item">
+                <span>📍</span>
+                <div>bangalore , India</div>
+            </div>
+
+            <div class="contact-item">
+                <span>📞</span>
+                <div>
+                    <a href="tel:+916363856952">+91 63638 56952</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span>✉️</span>
+                <div>
+                    <a href="mailto:comforthealthmix@gmail.com">
+                        comforthealthmix@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span>💬</span>
+                <div>
+                    <a href="https://wa.me/916363856952" target="_blank">
+                        WhatsApp Support
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-time">
+                🕘 Mon – Sat : 9:00 AM – 7:00 PM
+            </div>
+        </div>
+
+        <!-- DELIVERY & SUPPORT INFO -->
+        <div class="card">
+            <h2>Delivery & Support</h2>
+
+            <ul class="support-list">
+                                <li>
+                    <strong>📦 Shipping:</strong><br>
+                    We provide safe and hygienic packaging for all products.
+                </li>
+
+                <li>
+                    <strong>❌ Order Issues:</strong><br>
+                    If your order is damaged or delayed, contact us within 24 hours.
+                </li>
+
+                <li>
+                    <strong>🔁 Returns:</strong><br>
+                    Returns accepted only for damaged or wrong products.
+                </li>
+
+                <li>
+                    <strong>💳 Payment Support:</strong><br>
+                    UPI, Cash on Delivery & WhatsApp orders available.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+// Simple interaction log
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        console.log("User clicked contact/support link");
+    });
+});
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
+
+
+</body>
+</html>
+
